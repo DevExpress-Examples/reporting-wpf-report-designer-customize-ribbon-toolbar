@@ -1,0 +1,41 @@
+﻿<Window x:Class="CustomizeReportDesignerToolbar.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" 
+    xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:dxpbars="http://schemas.devexpress.com/winfx/2008/xaml/printing/bars"
+    xmlns:dxrud="http://schemas.devexpress.com/winfx/2008/xaml/reports/userdesigner" 
+    xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+    Height="350" Width="525" Loaded="Window_Loaded">
+    <dxrud:ReportDesigner x:Name="reportDesigner">
+        <dxrud:ReportDesigner.RibbonCustomizationActions>
+            <dxb:RemoveAction ElementName="{x:Static dxrud:DefaultBarItemNames.SaveAs}" />
+            <dxb:RemoveAction ContainerName="{x:Static dxrud:DefaultBarItemNames.DesignerPage}" 
+                              ElementName="{x:Static dxrud:DefaultBarItemNames.EditorsGroup}" />
+            <dxb:RemoveAction ContainerName="{x:Static dxrud:DefaultBarItemNames.PreviewPage}" 
+                              ElementName="{x:Static dxpbars:DefaultPreviewBarItemNames.FileGroup}" />
+
+            <dxb:InsertAction ContainerName="{x:Static dxrud:DefaultBarItemNames.ReportGroup}">
+                <dxb:InsertAction.Element>
+                    <dxb:BarButtonItem LargeGlyph="{dx:DXImage Image=close_32x32.png}" 
+                                       Glyph="{dx:DXImage Image=close_16x16.png}" Content="Close Document" 
+                                       ItemClick="CloseDocumentButton_ItemClick"/>
+                </dxb:InsertAction.Element>
+            </dxb:InsertAction>
+
+            <dxb:InsertAction ContainerName="{x:Static dxrud:DefaultBarItemNames.DesignerPage}">
+                <dxb:InsertAction.Element>
+                    <dxr:RibbonPageGroup Caption="Help" Name="CustomCommandsGroup" />
+                </dxb:InsertAction.Element>
+            </dxb:InsertAction>
+            <dxb:InsertAction ContainerName="CustomCommandsGroup">
+                <dxb:InsertAction.Element>
+                    <dxb:BarButtonItem LargeGlyph="{dx:DXImage Image=index_32x32.png}" 
+                                       Glyph="{dx:DXImage Image=index_16x16.png}" Content="About" 
+                                       ItemClick="AboutButton_ItemClick"/>
+                </dxb:InsertAction.Element>
+            </dxb:InsertAction>
+        </dxrud:ReportDesigner.RibbonCustomizationActions>
+    </dxrud:ReportDesigner>
+</Window>
