@@ -23,25 +23,25 @@ Imports DevExpress.XtraReports.UI
 
 
 Namespace WpfApplicationEUDCustomPropertiesWindow
-	''' <summary>
-	''' Interaction logic for DXWindow1.xaml
-	''' </summary>
-	Partial Public Class MainWindow
-		Inherits DXWindow
+    ''' <summary>
+    ''' Interaction logic for DXWindow1.xaml
+    ''' </summary>
+    Partial Public Class MainWindow
+        Inherits DXWindow
 
-		Public Shared ReadOnly CustomRibbonCommandsProperty As DependencyProperty = DependencyProperty.Register("CustomRibbonCommands", GetType(CustomizedRibbonCommands), GetType(MainWindow), New PropertyMetadata(Nothing))
-		Public Property CustomRibbonCommands() As CustomizedRibbonCommands
-			Get
-				Return CType(GetValue(CustomRibbonCommandsProperty), CustomizedRibbonCommands)
-			End Get
-			Set(ByVal value As CustomizedRibbonCommands)
-				SetValue(CustomRibbonCommandsProperty, value)
-			End Set
-		End Property
-		Public Sub New()
-			InitializeComponent()
-			CustomRibbonCommands = New CustomizedRibbonCommands(reportDesigner)
-			reportDesigner.OpenDocument(New XtraReport())
-		End Sub
-	End Class
+        Public Shared ReadOnly CustomRibbonCommandsProperty As DependencyProperty = DependencyProperty.Register("CustomRibbonCommands", GetType(CustomizedRibbonCommands), GetType(MainWindow), New PropertyMetadata(Nothing))
+        Public Property CustomRibbonCommands() As CustomizedRibbonCommands
+            Get
+                Return CType(GetValue(CustomRibbonCommandsProperty), CustomizedRibbonCommands)
+            End Get
+            Set(ByVal value As CustomizedRibbonCommands)
+                SetValue(CustomRibbonCommandsProperty, value)
+            End Set
+        End Property
+        Public Sub New()
+            InitializeComponent()
+            CustomRibbonCommands = New CustomizedRibbonCommands(reportDesigner)
+            reportDesigner.OpenDocument(New XtraReport())
+        End Sub
+    End Class
 End Namespace

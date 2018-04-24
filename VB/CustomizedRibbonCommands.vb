@@ -11,103 +11,127 @@ Imports System.Windows.Data
 Imports System.Windows.Media
 
 Namespace WpfApplicationEUDCustomPropertiesWindow
-	Public Class CustomizedRibbonCommands
-		Implements INotifyPropertyChanged
+    Public Class CustomizedRibbonCommands
+        Implements INotifyPropertyChanged
 
-		Private _designer As ReportDesigner
-		Private _toolboxControl As LayoutPanel
-		Private _sidePanelControl As DevExpress.Xpf.Docking.TabbedGroup
+        Private _designer As ReportDesigner
+        Private _toolboxControl As LayoutPanel
+        Private _sidePanelControl As DevExpress.Xpf.Docking.TabbedGroup
 
-		Protected ReadOnly Property ToolboxControl() As LayoutPanel
-			Get
-				If _toolboxControl Is Nothing Then
-                    _toolboxControl = CType(FindDesignerElement(Function(child) child.GetType() Is GetType(LayoutPanel)), LayoutPanel)
+        Protected ReadOnly Property ToolboxControl() As LayoutPanel
+            Get
+                If _toolboxControl Is Nothing Then
+                    _toolboxControl = CType(FindDesignerElement(Function(child)
+                        Return child.GetType() Is GetType(LayoutPanel)
+                    End Function}), LayoutPanel)
+
+                Return _toolboxControl
                 End If
+            End Get
 
-				Return _toolboxControl
-			End Get
-		End Property
+'INSTANT VB TODO TASK: Local functions are not converted by Instant VB:
+'        protected TabbedGroup SidePanelControl
+'        {
+'            get
+'            {
+'                if (_sidePanelControl == Nothing)
+'                    _sidePanelControl = (TabbedGroup)FindDesignerElement((child) =>
+'                    {
+'                        Return child.GetType() == typeof(TabbedGroup);
+'                    }
+'                   );
+'
+'                Return _sidePanelControl;
+'            }
+'        }
 
-		Protected ReadOnly Property SidePanelControl() As TabbedGroup
-			Get
-				If _sidePanelControl Is Nothing Then
-                    _sidePanelControl = CType(FindDesignerElement(Function(child) child.GetType() Is GetType(TabbedGroup)), TabbedGroup)
-				End If
+'INSTANT VB TODO TASK: Local functions are not converted by Instant VB:
+'        public ReportDesigner Designer
+'        {
+'            get
+'            {
+'                Return _designer;
+'            }
+'        }
 
-				Return _sidePanelControl
-			End Get
-		End Property
+'INSTANT VB TODO TASK: Local functions are not converted by Instant VB:
+'        public bool IsToolboxVisible
+'        {
+'            get
+'            {
+'                Return ToolboxControl != Nothing ? ToolboxControl.Visibility == Visibility.Visible : False;
+'            }
+'            set
+'            {
+'                if (value != IsToolboxVisible)
+'                {
+'                    if (value)
+'                        ToolboxControl.SetBinding(LayoutPanel.VisibilityProperty, New Binding() { Path = New PropertyPath("(0).PreviewIsOpen", ReportDesigner.DocumentSelectorProperty), RelativeSource = New RelativeSource(RelativeSourceMode.Self), Converter = New BooleanToVisibilityConverter() { Inverse = True } });
+'                    else
+'                        ToolboxControl.Visibility = Visibility.Collapsed;
+'
+'                    RaisePropertyChanged("IsToolboxVisible");
+'                }
+'            }
+'        }
 
-		Public ReadOnly Property Designer() As ReportDesigner
-			Get
-				Return _designer
-			End Get
-		End Property
+'INSTANT VB TODO TASK: Local functions are not converted by Instant VB:
+'        public bool IsSidePanelVisible
+'        {
+'            get
+'            {
+'                Return SidePanelControl != Nothing ? SidePanelControl.Visibility == Visibility.Visible : False;
+'            }
+'            set
+'            {
+'                if (value != IsSidePanelVisible)
+'                {
+'                    if (value)
+'                        SidePanelControl.SetBinding(LayoutPanel.VisibilityProperty, New Binding() { Path = New PropertyPath("(0).PreviewIsOpen", ReportDesigner.DocumentSelectorProperty), RelativeSource = New RelativeSource(RelativeSourceMode.Self), Converter = New BooleanToVisibilityConverter() { Inverse = True } });
+'                    else
+'                        SidePanelControl.Visibility = Visibility.Collapsed;
+'
+'                    RaisePropertyChanged("IsSidePanelVisible");
+'                }
+'            }
+'        }
 
-		Public Property IsToolboxVisible() As Boolean
-			Get
-				Return If(ToolboxControl IsNot Nothing, ToolboxControl.Visibility = Visibility.Visible, False)
-			End Get
-			Set(ByVal value As Boolean)
-				If value <> IsToolboxVisible Then
-					If value Then
-						ToolboxControl.SetBinding(LayoutPanel.VisibilityProperty, New Binding() With {
-							.Path = New PropertyPath("(0).PreviewIsOpen", ReportDesigner.DocumentSelectorProperty), .RelativeSource = New RelativeSource(RelativeSourceMode.Self), .Converter = New BooleanToVisibilityConverter() With {.Inverse = True}
-						})
-					Else
-						ToolboxControl.Visibility = Visibility.Collapsed
-					End If
+        public event PropertyChangedEventHandler PropertyChangedEvent
 
-					RaisePropertyChanged("IsToolboxVisible")
-				End If
-			End Set
-		End Property
+'INSTANT VB TODO TASK: Local functions are not converted by Instant VB:
+'        public CustomizedRibbonCommands(ReportDesigner designer)
+'        {
+'            Me._designer = designer;
+'        }
 
-		Public Property IsSidePanelVisible() As Boolean
-			Get
-				Return If(SidePanelControl IsNot Nothing, SidePanelControl.Visibility = Visibility.Visible, False)
-			End Get
-			Set(ByVal value As Boolean)
-				If value <> IsSidePanelVisible Then
-					If value Then
-						SidePanelControl.SetBinding(LayoutPanel.VisibilityProperty, New Binding() With {
-							.Path = New PropertyPath("(0).PreviewIsOpen", ReportDesigner.DocumentSelectorProperty), .RelativeSource = New RelativeSource(RelativeSourceMode.Self), .Converter = New BooleanToVisibilityConverter() With {.Inverse = True}
-						})
-					Else
-						SidePanelControl.Visibility = Visibility.Collapsed
-					End If
+'INSTANT VB TODO TASK: Local functions are not converted by Instant VB:
+'        private DependencyObject FindElement(DependencyObject parent, Func(Of DependencyObject, bool) condition)
+'        {
+'            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
+'            {
+'                DependencyObject child = VisualTreeHelper.GetChild(parent, i);
+'                if (condition(child))
+'                    Return child;
+'                DependencyObject result = FindElement(child, condition);
+'                if (result != Nothing)
+'                    Return result;
+'            }
+'            Return Nothing;
+'        }
 
-					RaisePropertyChanged("IsSidePanelVisible")
-				End If
-			End Set
-		End Property
+'INSTANT VB TODO TASK: Local functions are not converted by Instant VB:
+'        protected DependencyObject FindDesignerElement(Func(Of DependencyObject, bool) condition)
+'        {
+'            Return FindElement(Designer, condition);
+'        }
 
-		Public Event PropertyChanged As PropertyChangedEventHandler Implements INotifyPropertyChanged.PropertyChanged
-
-		Public Sub New(ByVal designer As ReportDesigner)
-			Me._designer = designer
-		End Sub
-
-		Private Function FindElement(ByVal parent As DependencyObject, ByVal condition As Func(Of DependencyObject, Boolean)) As DependencyObject
-			For i As Integer = 0 To VisualTreeHelper.GetChildrenCount(parent) - 1
-				Dim child As DependencyObject = VisualTreeHelper.GetChild(parent, i)
-				If condition(child) Then
-					Return child
-				End If
-				Dim result As DependencyObject = FindElement(child, condition)
-				If result IsNot Nothing Then
-					Return result
-				End If
-			Next i
-			Return Nothing
-		End Function
-
-		Protected Function FindDesignerElement(ByVal condition As Func(Of DependencyObject, Boolean)) As DependencyObject
-			Return FindElement(Designer, condition)
-		End Function
-
-		Protected Sub RaisePropertyChanged(ByVal propertyName As String)
-			RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(propertyName))
-		End Sub
-	End Class
-End Namespace
+'INSTANT VB TODO TASK: Local functions are not converted by Instant VB:
+'        protected void RaisePropertyChanged(string propertyName)
+'        {
+'            if (PropertyChanged != Nothing)
+'            {
+'                PropertyChanged(Me, New PropertyChangedEventArgs(propertyName));
+'            }
+'        }
+        End Property
+    End Class
