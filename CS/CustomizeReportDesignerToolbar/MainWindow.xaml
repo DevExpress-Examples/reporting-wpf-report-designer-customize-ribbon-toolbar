@@ -12,28 +12,26 @@
         <dxrud:ReportDesigner.RibbonCustomizationActions>
             <dxb:RemoveAction ElementName="{x:Static dxrud:DefaultBarItemNames.SaveAs}" />
             <dxb:RemoveAction ContainerName="{x:Static dxrud:DefaultBarItemNames.DesignerPage}" 
-                              ElementName="{x:Static dxrud:DefaultBarItemNames.EditorsGroup}" />
+                              ElementName="{x:Static dxrud:DefaultBarItemNames.FontGroup}" />
             <dxb:RemoveAction ContainerName="{x:Static dxrud:DefaultBarItemNames.PreviewPage}" 
                               ElementName="{x:Static dxpbars:DefaultPreviewBarItemNames.FileGroup}" />
-
+            
             <dxb:InsertAction ContainerName="{x:Static dxrud:DefaultBarItemNames.ReportGroup}">
                 <dxb:InsertAction.Element>
-                    <dxb:BarButtonItem LargeGlyph="{dx:DXImage Image=close_32x32.png}" 
-                                       Glyph="{dx:DXImage Image=close_16x16.png}" Content="Close Document" 
-                                       ItemClick="CloseDocumentButton_ItemClick"/>
+                    <dxb:BarButtonItem LargeGlyph="{dx:SvgImageSource Uri='/CustomizeReportDesignerToolbar;component/Images/Close.svg'}" 
+                                       Content="Close Document" ItemClick="CloseDocumentButton_ItemClick"/>
                 </dxb:InsertAction.Element>
             </dxb:InsertAction>
 
-            <dxb:InsertAction ContainerName="{x:Static dxrud:DefaultBarItemNames.DesignerPage}">
+            <dxb:InsertAction ContainerName="{x:Static dxrud:DefaultBarItemNames.DesignerHomePage}">
                 <dxb:InsertAction.Element>
                     <dxr:RibbonPageGroup Caption="Help" Name="CustomCommandsGroup" />
                 </dxb:InsertAction.Element>
             </dxb:InsertAction>
             <dxb:InsertAction ContainerName="CustomCommandsGroup">
                 <dxb:InsertAction.Element>
-                    <dxb:BarButtonItem LargeGlyph="{dx:DXImage Image=index_32x32.png}" 
-                                       Glyph="{dx:DXImage Image=index_16x16.png}" Content="About" 
-                                       ItemClick="AboutButton_ItemClick"/>
+                    <dxb:BarButtonItem LargeGlyph="{dx:SvgImageSource Uri='/CustomizeReportDesignerToolbar;component/Images/About.svg'}"
+                                       Content="About" ItemClick="AboutButton_ItemClick"/>
                 </dxb:InsertAction.Element>
             </dxb:InsertAction>
         </dxrud:ReportDesigner.RibbonCustomizationActions>
