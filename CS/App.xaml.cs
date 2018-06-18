@@ -5,14 +5,12 @@ using System.Data;
 using System.Linq;
 using System.Windows;
 
-namespace WpfApplicationEUDCustomPropertiesWindow {
+namespace CustomizeReportDesignerToolbar
+{
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : Application {
-        private void OnAppStartup_UpdateThemeName(object sender, StartupEventArgs e) {
-
-            DevExpress.Xpf.Core.ApplicationThemeHelper.UpdateApplicationThemeName();
-        }
+    public partial class App : Application
+    {
     }
 }
