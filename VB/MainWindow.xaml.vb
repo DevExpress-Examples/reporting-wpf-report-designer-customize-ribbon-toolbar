@@ -1,11 +1,12 @@
-﻿Imports System.Windows
+Imports System.Windows
 Imports DevExpress.XtraReports.UI
 
 Namespace CustomizeReportDesignerToolbar
+
     ''' <summary>
     ''' Interaction logic for MainWindow.xaml
     ''' </summary>
-    Partial Public Class MainWindow
+    Public Partial Class MainWindow
         Inherits Window
 
         Public Sub New()
@@ -13,9 +14,7 @@ Namespace CustomizeReportDesignerToolbar
         End Sub
 
         Private Sub CloseDocumentButton_ItemClick(ByVal sender As Object, ByVal e As DevExpress.Xpf.Bars.ItemClickEventArgs)
-            If reportDesigner.ActiveDocument IsNot Nothing Then
-                reportDesigner.ActiveDocument.Close()
-            End If
+            If reportDesigner.ActiveDocument IsNot Nothing Then reportDesigner.ActiveDocument.Close()
         End Sub
 
         Private Sub AboutButton_ItemClick(ByVal sender As Object, ByVal e As DevExpress.Xpf.Bars.ItemClickEventArgs)
