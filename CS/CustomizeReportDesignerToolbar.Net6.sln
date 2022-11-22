@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 16
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CustomizeReportDesignerToolbar", "CustomizeReportDesignerToolbar.Net5.vbproj", "{99832A00-A81F-4D6D-8A0B-6864E99A2C42}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomizeReportDesignerToolbar", "CustomizeReportDesignerToolbar.Net6.csproj", "{99832A00-A81F-4D6D-8A0B-6864E99A2C42}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
