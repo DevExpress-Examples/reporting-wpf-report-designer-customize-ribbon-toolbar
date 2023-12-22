@@ -10,11 +10,11 @@ Namespace CustomizeReportDesignerToolbar
         Inherits Window
 
         Public Sub New()
-            InitializeComponent()
+            Me.InitializeComponent()
         End Sub
 
         Private Sub CloseDocumentButton_ItemClick(ByVal sender As Object, ByVal e As DevExpress.Xpf.Bars.ItemClickEventArgs)
-            If reportDesigner.ActiveDocument IsNot Nothing Then reportDesigner.ActiveDocument.Close()
+            If Me.reportDesigner.ActiveDocument IsNot Nothing Then Me.reportDesigner.ActiveDocument.Close()
         End Sub
 
         Private Sub AboutButton_ItemClick(ByVal sender As Object, ByVal e As DevExpress.Xpf.Bars.ItemClickEventArgs)
@@ -22,7 +22,7 @@ Namespace CustomizeReportDesignerToolbar
         End Sub
 
         Private Sub Window_Loaded(ByVal sender As Object, ByVal e As RoutedEventArgs)
-            reportDesigner.OpenDocument(New XtraReport())
+            Me.reportDesigner.OpenDocument(New XtraReport())
         End Sub
     End Class
 End Namespace
